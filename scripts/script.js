@@ -1,33 +1,51 @@
-let qField = $('q_field').html()
-let answ1 = $('answ1').html()
-let answ2 = $('answ2').html()
-let answ3 = $('answ3').html()
-let answ4 = $('answ4').html()
-let body = $('body')
+var qField = $('.q_field')
+var answ1 = $('.answ1')
+var answ2 = $('.answ2')
+var answ3 = $('.answ3')
+var answ4 = $('.answ4')
+var body = $('.section2')
+var lvlCounter = 1
+var rightAnswers = 0
+
+//$('.section2').addEventListener("click", this.helloWorld, false);
+
 
 class TriviaGame {
   constructor () {
-    this.number = Math.floor(Math.random() * 4)
-
-    qField = questions.number.question
-    answ1 = questions.number.answ1
-    answ2 = questions.number.answ2
-    answ3 = questions.number.answ3
-    answ4 = questions.number.answ4
-    // counter starts at 1
     
-    body.addEventListener('click', checkAnswer() {
-        if (click === this.corAnsw) {
-            console.log(`You've got it!`)
-        } else { console.log('Nope!') }
-              
-    })
+    this.newLvl(lvlCounter)
+    
+    
   }
-//   checkAnswer (click) {
-//     if (click === this.corAnsw) {
-//       console.log(`You've got it!`)
-//     } else { console.log('Nope!') }
-//   }
+  newLvl(lvlCounter) {
+    qField.html(questions[lvlCounter].question) 
+    answ1.html(questions[lvlCounter].answ1)
+    answ2.html(questions[lvlCounter].answ2)
+    answ3.html(questions[lvlCounter].answ3)
+    answ4.html(questions[lvlCounter].answ4)
+
+    //$('.section2').addEventListener("click", this.helloWorld, false);
+  }
+
+  helloWorld(){
+    consoloe.log('HelloWorld!')
+  }
+
+  nextLevel() {
+    lvlCounter++
+    this.newLvl(lvlCounter)
+  }
+
+  checkAnswer(click) {
+    if (click.html() === questions[lvlCounter].corAnsw) {
+      console.log(`You're right!!!`)
+      rightAnswers++
+      nextLevel()
+    } else {
+      console.log(`You're wrong!!!`)
+      nextLevel()
+    }
+  }
  }
 
 let questions = {
@@ -82,3 +100,5 @@ let questions = {
     }
   }
 }
+
+var Game = new TriviaGame()

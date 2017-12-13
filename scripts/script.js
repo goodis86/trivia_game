@@ -1,3 +1,8 @@
+/*
+  Global variables reside here.
+  First 5 are JQuery shortcuts, and then counters for displays fields 
+*/
+
 var qField = $('.q_field')
 var answ1 = $('.answ1')
 var answ2 = $('.answ2')
@@ -9,6 +14,21 @@ var rightAnswers = 0
 
 //$('.section2').addEventListener("click", this.helloWorld, false);
 
+/* 
+  The main game class.
+  Structure goes like this:
+  1. Constructor launches the newLvl() which accesses the local
+  object with questions and places them in the DOM according
+  to tags conveniently established in the head.
+
+  2. Also constructor launches the eventListener for clicks which
+  in it's term lauches the checkAnswerw()
+
+  3. checkAnswerw() provides a check and iterates the counters.
+  After that it launches the nextLevel() which iterates the main
+  caunter. It's used for the ID pickup from the DB. And relaunching
+  the this.newLvl() with iterated ID.
+*/
 
 class TriviaGame {
   constructor () {

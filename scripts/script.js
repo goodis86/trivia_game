@@ -44,26 +44,31 @@ class TriviaGame {
     answ3.html(questions[lvlCounter].answ3)
     answ4.html(questions[lvlCounter].answ4)
 
-    //$('.section2').addEventListener("click", this.helloWorld, false);
+    //$('.section2').click(this.helloWorld.bind(this));
+    $('.section2').click(this.checkAnswer.bind(this));
   }
 
-  helloWorld(){
-    consoloe.log('HelloWorld!')
-  }
+  // helloWorld (event) {
+  //   console.log('HelloWorld!', this, event)
+  //   // $
+  //   let text = $(event.target).html()
+  //   // vanilla
+  //   let otherText = event.target.innerHTML
+  //   console.log(text, otherText)
+  // }
 
-  nextLevel() {
+  nextLevel () {
     lvlCounter++
     this.newLvl(lvlCounter)
   }
 
-  checkAnswer(click) {
-    if (click.html() === questions[lvlCounter].corAnsw) {
-      console.log(`You're right!!!`)
-      rightAnswers++
-      nextLevel()
+  checkAnswer(event) {
+    if ($(event.target).html() === questions[lvlCounter].corAnsw) {
+      console.log(`You're right!!! C/A ${questions[lvlCounter].corAnsw}`)
+      this.nextLevel()
     } else {
       console.log(`You're wrong!!!`)
-      nextLevel()
+      this.nextLevel()
     }
   }
  }
@@ -84,12 +89,7 @@ let questions = {
     answ2: 'David',
     answ3: 'Zack',
     answ4: 'Pete',
-    corAnsw: 'Zack',
-    check: function (click) {
-      if (click === this.corAnsw) {
-        console.log(`You've got it!`)
-      } else { console.log('Nope!') }
-    }
+    corAnsw: 'Zack'
   },
 
   3: {
@@ -98,12 +98,7 @@ let questions = {
     answ2: 'David',
     answ3: 'Zack',
     answ4: 'Pete',
-    corAnsw: 'David',
-    check: function (click) {
-      if (click === this.corAnsw) {
-        console.log(`You've got it!`)
-      } else { console.log('Nope!') }
-    }
+    corAnsw: 'David'
   },
 
   4: {
@@ -112,12 +107,7 @@ let questions = {
     answ2: 'David',
     answ3: 'Zack',
     answ4: 'Pete',
-    corAnsw: 'Pete',
-    check: function (click) {
-      if (click === this.corAnsw) {
-        console.log(`You've got it!`)
-      } else { console.log('Nope!') }
-    }
+    corAnsw: 'Pete'
   }
 }
 

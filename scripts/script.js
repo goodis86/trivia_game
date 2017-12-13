@@ -33,11 +33,14 @@ var rightAnswers = 0
 class TriviaGame {
   constructor () {
     
+    console.log(`lvlCounter in constructor=${lvlCounter}`)
     this.newLvl(lvlCounter)
     
+    $('.section2').click(this.checkAnswer.bind(this));
     
   }
   newLvl(lvlCounter) {
+    console.log(`lvlCounter in newLvl=${lvlCounter}`)
     qField.html(questions[lvlCounter].question) 
     answ1.html(questions[lvlCounter].answ1)
     answ2.html(questions[lvlCounter].answ2)
@@ -45,7 +48,7 @@ class TriviaGame {
     answ4.html(questions[lvlCounter].answ4)
 
     //$('.section2').click(this.helloWorld.bind(this));
-    $('.section2').click(this.checkAnswer.bind(this));
+    //$('.section2').click(this.checkAnswer.bind(this));
   }
 
   // helloWorld (event) {
@@ -59,10 +62,16 @@ class TriviaGame {
 
   nextLevel () {
     lvlCounter++
+    console.log(`lvlCounter=${lvlCounter}`)
     this.newLvl(lvlCounter)
   }
 
   checkAnswer(event) {
+    // =================== checks and logs ==================
+    console.log(`event target= ${$(event.target).html()}`)
+    console.log(`corAnsw= ${questions[lvlCounter].corAnsw}`)
+    // ======================================================
+
     if ($(event.target).html() === questions[lvlCounter].corAnsw) {
       console.log(`You're right!!! C/A ${questions[lvlCounter].corAnsw}`)
       this.nextLevel()
@@ -102,6 +111,78 @@ let questions = {
   },
 
   4: {
+    question: `What is Pete's name?`,
+    answ1: 'Sandro',
+    answ2: 'David',
+    answ3: 'Zack',
+    answ4: 'Pete',
+    corAnsw: 'Pete'
+  },
+
+  5: {
+    question: `What is Sandro's name?`,
+    answ1: 'Sandro',
+    answ2: 'David',
+    answ3: 'Zack',
+    answ4: 'Pete',
+    corAnsw: 'Sandro'
+  },
+
+  6: {
+    question: `What is Zack's name?`,
+    answ1: 'Sandro',
+    answ2: 'David',
+    answ3: 'Zack',
+    answ4: 'Pete',
+    corAnsw: 'Zack'
+  },
+
+  7: {
+    question: `What is David's name?`,
+    answ1: 'Sandro',
+    answ2: 'David',
+    answ3: 'Zack',
+    answ4: 'Pete',
+    corAnsw: 'David'
+  },
+
+  8: {
+    question: `What is Pete's name?`,
+    answ1: 'Sandro',
+    answ2: 'David',
+    answ3: 'Zack',
+    answ4: 'Pete',
+    corAnsw: 'Pete'
+  },
+
+  9: {
+    question: `What is Sandro's name?`,
+    answ1: 'Sandro',
+    answ2: 'David',
+    answ3: 'Zack',
+    answ4: 'Pete',
+    corAnsw: 'Sandro'
+  },
+
+  10: {
+    question: `What is Zack's name?`,
+    answ1: 'Sandro',
+    answ2: 'David',
+    answ3: 'Zack',
+    answ4: 'Pete',
+    corAnsw: 'Zack'
+  },
+
+  11: {
+    question: `What is David's name?`,
+    answ1: 'Sandro',
+    answ2: 'David',
+    answ3: 'Zack',
+    answ4: 'Pete',
+    corAnsw: 'David'
+  },
+
+  12: {
     question: `What is Pete's name?`,
     answ1: 'Sandro',
     answ2: 'David',

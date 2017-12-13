@@ -1,6 +1,6 @@
 /*
   Global variables reside here.
-  First 5 are JQuery shortcuts, and then counters for displays fields 
+  First 5 are JQuery shortcuts, and then counters for display fields 
 */
 
 var qField = $('.q_field')
@@ -12,7 +12,8 @@ var body = $('.section2')
 var lvlCounter = 1
 var rightAnswers = 0
 
-//$('.section2').addEventListener("click", this.helloWorld, false);
+// JSon engaged
+
 
 /* 
   The main game class.
@@ -33,12 +34,15 @@ var rightAnswers = 0
 class TriviaGame {
   constructor () {
     
-    console.log(`lvlCounter in constructor=${lvlCounter}`)
+    // The main construction proccess of the game is fired up below
     this.newLvl(lvlCounter)
     
+    // The main event listener that registers the click
     $('.section2').click(this.checkAnswer.bind(this));
     
   }
+
+  // Question population is done below
   newLvl(lvlCounter) {
     console.log(`lvlCounter in newLvl=${lvlCounter}`)
     qField.html(questions[lvlCounter].question) 
@@ -46,26 +50,20 @@ class TriviaGame {
     answ2.html(questions[lvlCounter].answ2)
     answ3.html(questions[lvlCounter].answ3)
     answ4.html(questions[lvlCounter].answ4)
-
-    //$('.section2').click(this.helloWorld.bind(this));
-    //$('.section2').click(this.checkAnswer.bind(this));
   }
 
-  // helloWorld (event) {
-  //   console.log('HelloWorld!', this, event)
-  //   // $
-  //   let text = $(event.target).html()
-  //   // vanilla
-  //   let otherText = event.target.innerHTML
-  //   console.log(text, otherText)
-  // }
-
+  /* Next level is fired up below, also there is a check
+   so you wouldn't play too long :) */
   nextLevel () {
-    lvlCounter++
-    console.log(`lvlCounter=${lvlCounter}`)
-    this.newLvl(lvlCounter)
+    if (lvlCounter === 3) {this.terminator(); return}
+    else {
+      lvlCounter++
+      console.log(`lvlCounter=${lvlCounter}`)
+      this.newLvl(lvlCounter)
+    }
   }
 
+  //
   checkAnswer(event) {
     // =================== checks and logs ==================
     console.log(`event target= ${$(event.target).html()}`)
@@ -79,6 +77,15 @@ class TriviaGame {
       console.log(`You're wrong!!!`)
       this.nextLevel()
     }
+  }
+
+  shuffleObj(){
+    
+  }
+
+  terminator(){
+    console.log(`Terminator online! Terminating Sarah Connor!`)
+    $('.section2').off();
   }
  }
 
@@ -192,4 +199,14 @@ let questions = {
   }
 }
 
+//JSon engaged. Formating ans storing data in JSon file
+// var dataStore = JSON.stringify(questions)
+// storage.setItem('someData', dataToStore);
+// var localData = JSON.parse(localStorage.getItem('someData'));
+
+// $.each(localData, function(key, value){
+//   console.log(key + ' = ' + value);
+// });
+
+// I won't tell you what this string below does, sorry.
 var Game = new TriviaGame()

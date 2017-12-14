@@ -64,12 +64,14 @@ class TriviaGame {
         // Got some help in seting up the function timeout from Hamad
         if ($(event.target).html() === questions[lvlCounter].corAnsw) {
             points.html(`${++rightAnswers} pnts`)
+            qField.html(`You're right!!!`)
             console.log(`You're right!!! C/A ${questions[lvlCounter].corAnsw}`)
             setTimeout(this.nextLevel.bind(this), 1000);
             $('.section2').off();
         } else {
             console.log(`You're wrong!!!`)
-            setTimeout(this.nextLevel.bind(this), 1000);
+            qField.html(`You're wrong. Right answer is '${questions[lvlCounter].corAnsw}'`)
+            setTimeout(this.nextLevel.bind(this), 2000);
             $('.section2').off();
         }
     }

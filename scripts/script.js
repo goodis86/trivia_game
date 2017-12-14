@@ -1,6 +1,6 @@
 /*
   Global variables reside here.
-  First 5 are JQuery shortcuts, and then counters for display fields 
+  First 7 are JQuery shortcuts, and then there are counters for display fields 
 */
 
 var qField = $('.q_field')
@@ -63,16 +63,16 @@ class TriviaGame {
     checkAnswer(event) {
         // Got some help in seting up the function timeout from Hamad
         if ($(event.target).html() === questions[lvlCounter].corAnsw) {
+            $('.section2').off();
+            this.animatorGreen($(event.target))
             points.html(`${++rightAnswers} pnts`)
             qField.html(`You're right!!!`)
-            console.log(`You're right!!! C/A ${questions[lvlCounter].corAnsw}`)
             setTimeout(this.nextLevel.bind(this), 1000);
-            $('.section2').off();
         } else {
-            console.log(`You're wrong!!!`)
+            $('.section2').off();
+            this.animatorRed($(event.target))
             qField.html(`You're wrong. Right answer is '${questions[lvlCounter].corAnsw}'`)
             setTimeout(this.nextLevel.bind(this), 2000);
-            $('.section2').off();
         }
     }
 
@@ -109,6 +109,22 @@ class TriviaGame {
     terminator() {
         console.log(`Event listener terminated, game over`)
         $('.section2').off();
+    }
+
+    animatorGreen(target){
+      $(target).css('background', 'green')
+      setTimeout(function() {
+        $(target).css('background', 'linear-gradient(#4F428B, #22155A)');
+      }, 900);
+      
+    }
+
+    animatorRed(target){
+      $(target).css('background', 'red')
+      setTimeout(function() {
+        $(target).css('background', 'linear-gradient(#4F428B, #22155A)');
+      }, 1900);
+      
     }
 }
 

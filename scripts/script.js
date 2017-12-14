@@ -61,16 +61,16 @@ class TriviaGame {
 
     //
     checkAnswer(event) {
-
+        // Got some help in seting up the function timeout from Hamad
         if ($(event.target).html() === questions[lvlCounter].corAnsw) {
             points.html(`${++rightAnswers} pnts`)
             console.log(`You're right!!! C/A ${questions[lvlCounter].corAnsw}`)
-
-            this.animate(true, event.target)
-            setTimeout(this.nextLevel(), 3000);
+            setTimeout(this.nextLevel.bind(this), 1000);
+            $('.section2').off();
         } else {
             console.log(`You're wrong!!!`)
-            setTimeout(this.nextLevel(), 3000);
+            setTimeout(this.nextLevel.bind(this), 1000);
+            $('.section2').off();
         }
     }
 
@@ -88,8 +88,8 @@ class TriviaGame {
             return
         }
         else {
+            section.click(this.checkAnswer.bind(this));
             questionNum.html(`${lvlIndex+1}/10`)
-            console.log(`lvlIdex = ${lvlIndex}`);
             lvlCounter = lvlArg[lvlIndex]
             console.log(`next level lvlCounter= ${lvlCounter}`);
             this.newLvl(lvlCounter)
@@ -102,13 +102,6 @@ class TriviaGame {
             random.push(a.splice(Math.floor(Math.random() * (i + 1)), 1)[0]);
         }
         return random
-    }
-
-    animate(boolean, target){
-        if(boolean){
-            $(target).css("background-color", "green");
-        } else {
-            console.log('false');}
     }
 
     terminator() {

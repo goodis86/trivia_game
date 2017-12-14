@@ -8,11 +8,10 @@ var answ1 = $('.answ1')
 var answ2 = $('.answ2')
 var answ3 = $('.answ3')
 var answ4 = $('.answ4')
-var body = $('.section2')
-var lvlCounter = 1
+var section = $('.section2')
+var points = $('.q_points')
 var rightAnswers = 0
-
-// JSon engaged
+var lvlCounter = 1
 
 
 /* 
@@ -38,7 +37,7 @@ class TriviaGame {
     this.newLvl(lvlCounter)
     
     // The main event listener that registers the click
-    $('.section2').click(this.checkAnswer.bind(this));
+      section.click(this.checkAnswer.bind(this));
     
   }
 
@@ -71,16 +70,14 @@ class TriviaGame {
     // ======================================================
 
     if ($(event.target).html() === questions[lvlCounter].corAnsw) {
+      points.html(`${++rightAnswers} pnts`)
       console.log(`You're right!!! C/A ${questions[lvlCounter].corAnsw}`)
+
       this.nextLevel()
     } else {
       console.log(`You're wrong!!!`)
       this.nextLevel()
     }
-  }
-
-  shuffleObj(){
-    
   }
 
   terminator(){

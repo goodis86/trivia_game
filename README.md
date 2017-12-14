@@ -19,6 +19,9 @@ The project was written in **HTML**/**CSS**/**Java script**/**JQuery**
 ## Installation
 Runs in the browser
 
+## Known issues
+The page isn't mobile responsive currently
+
 ## Shoutout
 A big shoutout Zack and Hamad for helping with the logic during the development process
 

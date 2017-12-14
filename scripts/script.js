@@ -35,7 +35,7 @@ class TriviaGame {
     constructor() {
 
         // The main construction proccess of the game is fired up below
-        this.newLvl(lvlCounter)
+        this.newLvl(this.randomNumber())
 
         // The main event listener that registers the click
         section.click(this.checkAnswer.bind(this));
@@ -85,8 +85,12 @@ class TriviaGame {
         }
     }
 
-    animate() {
-
+    randomNumber(){
+        for (var a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], i = a.length; i--; ) {
+            var random = a.splice(Math.floor(Math.random() * (i + 1)), 1)[0];
+            console.log(random);
+        }
+        return random
     }
 
     terminator() {

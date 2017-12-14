@@ -55,7 +55,7 @@ class TriviaGame {
     /* Next level is fired up below, also there is a check
      so you wouldn't play too long :) */
     nextLevel() {
-        if (lvlCounter === 3) {
+        if (lvlCounter === 10) {
             this.terminator();
             return
         }
@@ -76,7 +76,6 @@ class TriviaGame {
 
         if ($(event.target).html() === questions[lvlCounter].corAnsw) {
             points.html(`${++rightAnswers} pnts`)
-            $("#card").flip();
             console.log(`You're right!!! C/A ${questions[lvlCounter].corAnsw}`)
 
             this.nextLevel()
@@ -98,111 +97,123 @@ class TriviaGame {
 
 let questions = {
     1: {
-        question: `What is Sandro's name?`,
-        answ1: 'Sandro',
-        answ2: 'David',
-        answ3: 'Zack',
-        answ4: 'Pete',
-        corAnsw: 'Sandro'
+        question: `What was this scientist's nationality at birth?
+Daniel Bernoulli`,
+        answ1: 'Swiss',
+        answ2: 'French',
+        answ3: 'Belgian',
+        answ4: 'Italian',
+        corAnsw: 'Swiss'
     },
 
     2: {
-        question: `What is Zack's name?`,
-        answ1: 'Sandro',
-        answ2: 'David',
-        answ3: 'Zack',
-        answ4: 'Pete',
-        corAnsw: 'Zack'
+        question: `This is the study or science of what?
+dermatology`,
+        answ1: 'of plants',
+        answ2: 'of skin',
+        answ3: 'of matter',
+        answ4: 'of animals',
+        corAnsw: 'of skin'
     },
 
     3: {
-        question: `What is David's name?`,
-        answ1: 'Sandro',
-        answ2: 'David',
-        answ3: 'Zack',
-        answ4: 'Pete',
-        corAnsw: 'David'
+        question: `Which person is associated with this invention or discovery?
+Microwave oven`,
+        answ1: 'Percy Spencer',
+        answ2: 'Dennis Gabor',
+        answ3: 'James Hargreaves',
+        answ4: 'Raymond Kurzweil',
+        corAnsw: 'Percy Spencer'
     },
 
     4: {
-        question: `What is Pete's name?`,
-        answ1: 'Sandro',
-        answ2: 'David',
-        answ3: 'Zack',
-        answ4: 'Pete',
-        corAnsw: 'Pete'
+        question: `This is the study or science of what?
+botany`,
+        answ1: 'of animals',
+        answ2: 'of environment',
+        answ3: 'of life',
+        answ4: 'of plants',
+        corAnsw: 'of plants'
     },
 
     5: {
-        question: `What is Sandro's name?`,
-        answ1: 'Sandro',
-        answ2: 'David',
-        answ3: 'Zack',
-        answ4: 'Pete',
-        corAnsw: 'Sandro'
+        question: `This is the study or science of what?
+cytology`,
+        answ1: 'of saints',
+        answ2: 'of hands',
+        answ3: 'of flags',
+        answ4: 'of living cells',
+        corAnsw: 'of living cells'
     },
 
     6: {
-        question: `What is Zack's name?`,
-        answ1: 'Sandro',
-        answ2: 'David',
-        answ3: 'Zack',
-        answ4: 'Pete',
-        corAnsw: 'Zack'
+        question: `What is the name of this Greek letter?
+Ξ`,
+        answ1: 'Xi',
+        answ2: 'Sigma',
+        answ3: 'Epsilon',
+        answ4: 'Eta',
+        corAnsw: 'Xi'
     },
 
     7: {
-        question: `What is David's name?`,
-        answ1: 'Sandro',
-        answ2: 'David',
-        answ3: 'Zack',
-        answ4: 'Pete',
-        corAnsw: 'David'
+        question: `This person is associated with the invention or discovery of what?
+Johann Maria Farina`,
+        answ1: 'Neon lamp',
+        answ2: 'Eau de Cologne',
+        answ3: 'Stainless steel',
+        answ4: 'Chocolate milk',
+        corAnsw: 'Eau de Cologne'
     },
 
     8: {
-        question: `What is Pete's name?`,
-        answ1: 'Sandro',
-        answ2: 'David',
-        answ3: 'Zack',
-        answ4: 'Pete',
-        corAnsw: 'Pete'
+        question: `What is this study or science called?
+study of signs and symbols`,
+        answ1: 'vexillology',
+        answ2: 'urbanology',
+        answ3: 'semiotics',
+        answ4: 'chiropody',
+        corAnsw: 'semiotics'
     },
 
     9: {
-        question: `What is Sandro's name?`,
-        answ1: 'Sandro',
-        answ2: 'David',
-        answ3: 'Zack',
-        answ4: 'Pete',
-        corAnsw: 'Sandro'
+        question: `What is this study or science called?
+study of handwriting`,
+        answ1: 'graphology',
+        answ2: 'phonology',
+        answ3: 'paleontology',
+        answ4: 'ornithology',
+        corAnsw: 'graphology'
     },
 
     10: {
-        question: `What is Zack's name?`,
-        answ1: 'Sandro',
-        answ2: 'David',
-        answ3: 'Zack',
-        answ4: 'Pete',
-        corAnsw: 'Zack'
+        question: `This is the study or science of what?
+ornithology`,
+        answ1: 'of poisons',
+        answ2: 'of birds',
+        answ3: 'of spiders',
+        answ4: 'of bones',
+        corAnsw: 'of birds'
     },
 
     11: {
-        question: `What is David's name?`,
-        answ1: 'Sandro',
-        answ2: 'David',
-        answ3: 'Zack',
-        answ4: 'Pete',
-        corAnsw: 'David'
+        question: `What specific isoline is described here?
+Line of equal pressure`,
+        answ1: 'Isotach',
+        answ2: 'Isobar',
+        answ3: 'Isotherm',
+        answ4: 'Isohuman',
+        corAnsw: 'Isobar'
     },
 
     12: {
-        question: `What is Pete's name?`,
-        answ1: 'Sandro',
-        answ2: 'David',
-        answ3: 'Zack',
-        answ4: 'Pete',
-        corAnsw: 'Pete'
+        question: `This is the study or science of what?
+physics`,
+        answ1: 'of substances',
+        answ2: 'of sound',
+        answ3: 'of mind',
+        answ4: 'of matter and energy',
+        corAnsw: 'of matter and energy'
     }
 }
 

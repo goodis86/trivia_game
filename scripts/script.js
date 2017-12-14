@@ -67,21 +67,23 @@ class TriviaGame {
             console.log(`You're right!!! C/A ${questions[lvlCounter].corAnsw}`)
 
             this.animate(true, event.target)
-            setTimeout(this.nextLevel(), 10000);
+            setTimeout(this.nextLevel(), 3000);
         } else {
             console.log(`You're wrong!!!`)
-            this.nextLevel()
+            setTimeout(this.nextLevel(), 3000);
         }
     }
 
     /* Next level is fired up below, also there is a check
-     so you wouldn't play too long :) */
+     so you wouldn't play for more than 10 lvls */
     nextLevel() {
 
         ++lvlIndex
         console.log(`lvlIndex=${lvlIndex}`);
         if (lvlIndex === 10) {
             questionNum.html(`${lvlIndex}/10`)
+            qField.html(`You answered correctly ${rightAnswers} questions`)
+
             this.terminator();
             return
         }

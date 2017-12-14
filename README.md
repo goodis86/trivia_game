@@ -9,6 +9,10 @@ Working.
 
 ## Screenshot
 [[https://git.generalassemb.ly/Gura-San/trivia_game/blob/master/images/game_main_screen.jpg|alt=Main game screen"]]
+[[ https://git.generalassemb.ly/Gura-San/trivia_game/blob/master/images/game_main_screen.jpg |alt=octocat ]]
+
+[logo]: images/game_main_screen.jpg "Main game screen"
+
 
 ## Tech/framework used
 The project was written in **HTML**/**CSS**/**Java script**/**JQuery**

@@ -10,6 +10,7 @@ var answ3 = $('.answ3')
 var answ4 = $('.answ4')
 var section = $('.section2')
 var points = $('.q_points')
+var questionNum = $('.q_counter')
 var rightAnswers = 0
 var lvlCounter = 1
 
@@ -56,7 +57,8 @@ class TriviaGame {
   nextLevel () {
     if (lvlCounter === 3) {this.terminator(); return}
     else {
-      lvlCounter++
+      ++lvlCounter
+      questionNum.html(`${lvlCounter}/10`)
       console.log(`lvlCounter=${lvlCounter}`)
       this.newLvl(lvlCounter)
     }

@@ -12,7 +12,9 @@ var section = $('.section2')
 var points = $('.q_points')
 var questionNum = $('.q_counter')
 var rightAnswers = 0
-var lvlCounter = 1
+var lvlArg = []
+var lvlIndex = 0
+var lvlCounter = 0
 
 
 /* 
@@ -35,7 +37,11 @@ class TriviaGame {
     constructor() {
 
         // The main construction proccess of the game is fired up below
-        this.newLvl(this.randomNumber())
+        lvlArg = this.randomNumber()
+        console.log(`lvlArg=${lvlArg}`);
+        lvlCounter = lvlArg[0]
+        console.log(lvlCounter);
+        this.newLvl(lvlCounter)
 
         // The main event listener that registers the click
         section.click(this.checkAnswer.bind(this));
@@ -44,6 +50,7 @@ class TriviaGame {
 
     // Question population is done below
     newLvl(lvlCounter) {
+        console.log(lvlCounter);
         console.log(`lvlCounter in newLvl=${lvlCounter}`)
         qField.html(questions[lvlCounter].question)
         answ1.html(questions[lvlCounter].answ1)
@@ -52,49 +59,58 @@ class TriviaGame {
         answ4.html(questions[lvlCounter].answ4)
     }
 
-    /* Next level is fired up below, also there is a check
-     so you wouldn't play too long :) */
-    nextLevel() {
-        if (lvlCounter === 10) {
-            this.terminator();
-            return
-        }
-        else {
-            ++lvlCounter
-            questionNum.html(`${lvlCounter}/10`)
-            console.log(`lvlCounter=${lvlCounter}`)
-            this.newLvl(lvlCounter)
-        }
-    }
-
     //
     checkAnswer(event) {
-        // =================== checks and logs ==================
-        console.log(`event target= ${$(event.target).html()}`)
-        console.log(`corAnsw= ${questions[lvlCounter].corAnsw}`)
-        // ======================================================
 
         if ($(event.target).html() === questions[lvlCounter].corAnsw) {
             points.html(`${++rightAnswers} pnts`)
             console.log(`You're right!!! C/A ${questions[lvlCounter].corAnsw}`)
 
-            this.nextLevel()
+            this.animate(true, event.target)
+            setTimeout(this.nextLevel(), 10000);
         } else {
             console.log(`You're wrong!!!`)
             this.nextLevel()
         }
     }
 
+    /* Next level is fired up below, also there is a check
+     so you wouldn't play too long :) */
+    nextLevel() {
+
+        ++lvlIndex
+        console.log(`lvlIndex=${lvlIndex}`);
+        if (lvlIndex === 10) {
+            questionNum.html(`${lvlIndex}/10`)
+            this.terminator();
+            return
+        }
+        else {
+            questionNum.html(`${lvlIndex+1}/10`)
+            console.log(`lvlIdex = ${lvlIndex}`);
+            lvlCounter = lvlArg[lvlIndex]
+            console.log(`next level lvlCounter= ${lvlCounter}`);
+            this.newLvl(lvlCounter)
+        }
+    }
+
     randomNumber(){
-        for (var a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], i = a.length; i--; ) {
-            var random = a.splice(Math.floor(Math.random() * (i + 1)), 1)[0];
-            console.log(random);
+        var random = []
+        for (let a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], i = a.length; i--; ) {
+            random.push(a.splice(Math.floor(Math.random() * (i + 1)), 1)[0]);
         }
         return random
     }
 
+    animate(boolean, target){
+        if(boolean){
+            $(target).css("background-color", "green");
+        } else {
+            console.log('false');}
+    }
+
     terminator() {
-        console.log(`Terminator online! Terminating Sarah Connor!`)
+        console.log(`Event listener terminated, game over`)
         $('.section2').off();
     }
 }

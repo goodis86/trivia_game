@@ -38,9 +38,7 @@ class TriviaGame {
 
         // The main construction proccess of the game is fired up below
         lvlArg = this.randomNumber()
-        console.log(`lvlArg=${lvlArg}`);
         lvlCounter = lvlArg[0]
-        console.log(lvlCounter);
         this.newLvl(lvlCounter)
 
         // The main event listener that registers the click
@@ -50,8 +48,6 @@ class TriviaGame {
 
     // Question population is done below
     newLvl(lvlCounter) {
-        console.log(lvlCounter);
-        console.log(`lvlCounter in newLvl=${lvlCounter}`)
         qField.html(questions[lvlCounter].question)
         answ1.html(questions[lvlCounter].answ1)
         answ2.html(questions[lvlCounter].answ2)
@@ -59,20 +55,20 @@ class TriviaGame {
         answ4.html(questions[lvlCounter].answ4)
     }
 
-    //
+    // Checking for the right answer
     checkAnswer(event) {
         // Got some help in seting up the function timeout from Hamad
         if ($(event.target).html() === questions[lvlCounter].corAnsw) {
-            $('.section2').off();
+            $(section).off();
             this.animatorGreen($(event.target))
             points.html(`${++rightAnswers} pnts`)
             qField.html(`You're right!!!`)
             setTimeout(this.nextLevel.bind(this), 1000);
         } else {
-            $('.section2').off();
-            animatorRed(event.target)
+            $(section).off();
+            this.animatorRed(event.target)
             qField.html(`You're wrong. Right answer is '${questions[lvlCounter].corAnsw}'`)
-            setTimeout(this.nextLevel.bind(this), 2000);
+            setTimeout(this.nextLevel.bind(this), 900);
         }
     }
 
@@ -81,7 +77,6 @@ class TriviaGame {
     nextLevel() {
 
         ++lvlIndex
-        console.log(`lvlIndex=${lvlIndex}`);
         if (lvlIndex === 10) {
             questionNum.html(`${lvlIndex}/10`)
             qField.html(`You answered correctly ${rightAnswers} questions`)
@@ -93,11 +88,11 @@ class TriviaGame {
             section.click(this.checkAnswer.bind(this));
             questionNum.html(`${lvlIndex+1}/10`)
             lvlCounter = lvlArg[lvlIndex]
-            console.log(`next level lvlCounter= ${lvlCounter}`);
             this.newLvl(lvlCounter)
         }
     }
 
+    // Shffuled array generator for random question start
     randomNumber(){
         var random = []
         for (let a = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10], i = a.length; i--; ) {
@@ -106,11 +101,13 @@ class TriviaGame {
         return random
     }
 
+    // Stopping the listener and hiding all the buttons
     terminator() {
-        console.log(`Event listener terminated, game over`)
-        $('.section2').off();
+      $(section).off()
+      $('.section2').hide()
     }
 
+    // Button coloring in green if the answer was right
     animatorGreen(target){
       $(target).css('background', 'green')
       setTimeout(function() {
@@ -119,15 +116,16 @@ class TriviaGame {
       
     }
 
+    // Button coloring in red if the answer was wrong
     animatorRed(target){
       $(target).css('background', 'red')
       setTimeout(function() {
         $(target).css('background', 'linear-gradient(#4F428B, #22155A)');
       }, 900);
-      
     }
 }
 
+// Question data base
 let questions = {
     1: {
         question: `What was this scientist's nationality at birth?

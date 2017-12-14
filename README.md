@@ -8,8 +8,7 @@ The project was done for the WDI20 first project assignment by Sandro Guraspasvi
 Working.
 
 ## Screenshot
-[[https://git.generalassemb.ly/Gura-San/trivia_game/blob/master/images/game_main_screen.jpg|alt=Main game screen"]]
-[[ https://git.generalassemb.ly/Gura-San/trivia_game/blob/master/images/game_main_screen.jpg |alt=octocat ]]
+[Main game screen](https://git.generalassemb.ly/Gura-San/trivia_game/blob/master/images/game_main_screen.jpg)
 
 [logo]: images/game_main_screen.jpg "Main game screen"
 
@@ -23,5 +22,5 @@ Runs in the browser
 ## Shoutout
 A big shoutout Zack and Hamad for helping with the logic during the development process
 
-##Triviaplaza
+## Triviaplaza
 The design of the project was inpired be the [TriviaPlaza](http://www.triviaplaza.com/) website. None of the code was copied.

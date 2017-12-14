@@ -8,7 +8,7 @@ var answ1 = $('.answ1')
 var answ2 = $('.answ2')
 var answ3 = $('.answ3')
 var answ4 = $('.answ4')
-var section = $('.section2')
+var section = $('.answ')
 var points = $('.q_points')
 var questionNum = $('.q_counter')
 var rightAnswers = 0
@@ -70,7 +70,7 @@ class TriviaGame {
             setTimeout(this.nextLevel.bind(this), 1000);
         } else {
             $('.section2').off();
-            this.animatorRed($(event.target))
+            animatorRed(event.target)
             qField.html(`You're wrong. Right answer is '${questions[lvlCounter].corAnsw}'`)
             setTimeout(this.nextLevel.bind(this), 2000);
         }
@@ -123,7 +123,7 @@ class TriviaGame {
       $(target).css('background', 'red')
       setTimeout(function() {
         $(target).css('background', 'linear-gradient(#4F428B, #22155A)');
-      }, 1900);
+      }, 900);
       
     }
 }

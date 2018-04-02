@@ -26,4 +26,4 @@ The page isn't mobile responsive currently
 A big shoutout Zach and Hammad for helping with the logic during the development process
 
 ## Triviaplaza
-The design of the project was inpired be the [TriviaPlaza](http://www.triviaplaza.com/) website. None of the code was copied.
+The design of the project was inpired by the [TriviaPlaza](http://www.triviaplaza.com/) website. None of the code was copied.
